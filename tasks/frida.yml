@@ -52,6 +52,7 @@
 - name: settings-daemon
   block:
 
+  # power
   - name: idle-dim
     community.general.dconf:
       key: /org/gnome/settings-daemon/plugins/power/idle-dim # If the screen should be dimmed to save power when the computer is idle.
@@ -71,6 +72,18 @@
     community.general.dconf:
       key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-timeout" # The amount of time in seconds the computer on AC power needs to be inactive before it goes to sleep. A value of 0 means never.
       value: "0"
+
+  # media-keys
+  - name: sleep-inactive-ac-timeout
+    community.general.dconf:
+      key: /org/gnome/settings-daemon/plugins/media-keys/volume-down
+      value: "['<Super>KP_Subtract']"
+
+  # media-keys
+  - name: sleep-inactive-ac-timeout
+    community.general.dconf:
+      key: /org/gnome/settings-daemon/plugins/media-keys/volume-up
+      value: "['<Super>KP_Add']"
 
 # calculator
 - name: calculator
