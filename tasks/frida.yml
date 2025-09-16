@@ -1,4 +1,4 @@
-# shell
+# /org/gnome/shell
 - name: shell
   block:
 
@@ -7,7 +7,7 @@
       key: /org/gnome/shell/remember-mount-password
       value: "true" # keine cryptsetup passwörter speichern
 
-# desktop
+# /org/gnome/desktop
 - name: dektop
   block:
 
@@ -16,10 +16,9 @@
       key: /org/gnome/desktop/media-handling/autorun-never # If set to true, then Nautilus will never prompt nor autorun/autostart programs when a medium is inserted.
       value: "false"
 
-  # Mülleimer automatisch leeren
   - name: old-files-age
     community.general.dconf:
-      key: /org/gnome/desktop/privacy/old-files-age # # Number of days to keep trash and temporary files
+      key: /org/gnome/desktop/privacy/old-files-age # Number of days to keep trash and temporary files
       value: "7"
 
   - name: remove-old-trash-files
@@ -32,23 +31,17 @@
       key: /org/gnome/desktop/privacy/remove-old-temp-files # Whether to remove old temporary files automatically
       value: "true"
 
-  # desktop/session
-  - block:
-
-    - name: idle-delay for 'all'
-      community.general.dconf:
-        key: /org/gnome/desktop/session/idle-delay # The number of seconds of inactivity before the session is considered idle.
-        value: "0"
-
-# desktop/screensaver
-- block:
+  - name: idle-delay for 'all'
+    community.general.dconf:
+      key: /org/gnome/desktop/session/idle-delay # The number of seconds of inactivity before the session is considered idle.
+      value: "0"
 
   - name: lock-enabled
     community.general.dconf:
       key: /org/gnome/desktop/screensaver/lock-enabled # Set this to TRUE to lock the screen when the screensaver goes active.
       value: "false"
 
-# settings-daemon
+# /org/gnome/settings-daemon
 - name: settings-daemon
   block:
 
@@ -72,7 +65,20 @@
       key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-timeout" # The amount of time in seconds the computer on AC power needs to be inactive before it goes to sleep. A value of 0 means never.
       value: "0"
 
-# calculator
+# /org/gnome/software
+- block:
+
+  - name: /org/gnome/software/allow-updates
+    community.general.dconf:
+      key: "/org/gnome/software/allow-updates"
+      value: "false"
+
+  - name: /org/gnome/software/download-updates
+    community.general.dconf:
+      key: "/org/gnome/software/download-updates"
+      value: "false"
+
+# /org/gnome/calculator
 - name: calculator
   block:
 
