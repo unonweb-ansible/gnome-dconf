@@ -5,7 +5,7 @@
   - name: remember-mount-password
     community.general.dconf:
       key: /org/gnome/shell/remember-mount-password
-      value: "true" # keine cryptsetup passwörter speichern
+      value: "false" # keine cryptsetup passwörter speichern
 
 # /org/gnome/desktop
 - name: dektop
@@ -14,11 +14,11 @@
   - name: autorun-never
     community.general.dconf:
       key: /org/gnome/desktop/media-handling/autorun-never # If set to true, then Nautilus will never prompt nor autorun/autostart programs when a medium is inserted.
-      value: "false"
+      value: "true"
 
   - name: old-files-age
     community.general.dconf:
-      key: /org/gnome/desktop/privacy/old-files-age # Number of days to keep trash and temporary files
+      key: /org/gnome/desktop/privacy/old-files-age # # Number of days to keep trash and temporary files
       value: "7"
 
   - name: remove-old-trash-files
@@ -45,7 +45,6 @@
 - name: settings-daemon
   block:
 
-  # power
   - name: idle-dim
     community.general.dconf:
       key: /org/gnome/settings-daemon/plugins/power/idle-dim # If the screen should be dimmed to save power when the computer is idle.
@@ -65,19 +64,7 @@
     community.general.dconf:
       key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-timeout" # The amount of time in seconds the computer on AC power needs to be inactive before it goes to sleep. A value of 0 means never.
       value: "0"
-
-  # media-keys
-  - name: sleep-inactive-ac-timeout
-    community.general.dconf:
-      key: /org/gnome/settings-daemon/plugins/media-keys/volume-down
-      value: "['<Super>KP_Subtract']"
-
-  # media-keys
-  - name: sleep-inactive-ac-timeout
-    community.general.dconf:
-      key: /org/gnome/settings-daemon/plugins/media-keys/volume-up
-      value: "['<Super>KP_Add']"
-
+      
 # /org/gnome/calculator
 - name: calculator
   block:
