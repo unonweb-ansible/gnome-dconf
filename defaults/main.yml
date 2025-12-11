@@ -1,4 +1,3 @@
 ---
-gnome_dconf:
-  user:
-  task:
+gnome_dconf_user: # global
+gnome_dconf_subtask:

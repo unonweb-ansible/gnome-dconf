@@ -1,23 +1,11 @@
 ---
-# NOTES
-# -----
-# string: "'myvalue'"
-# integer: "5"
-# boolean: "true|false"
-# array: "['first', 'second', ...]"
-# enumeration: "'nothing'"
-
 - name: gnome-dconf role
   tags:
     - gnome-dconf
   block:
 
   # normal user
-  - when: gnome_dconf.user != "global"
-    name: Copy user config 
+  - when: gnome_dconf_user != "global"
     become: true
-    become_user: "{{ gnome_dconf.user }}"
-    ansible.builtin.import_tasks: "{{ role_path }}/tasks/{{ gnome_dconf.task }}"
-
-
-      
+    become_user: "{{ gnome_dconf_user }}"
+    ansible.builtin.import_tasks: "{{ role_path }}/tasks/{{ gnome_dconf_subtask }}"
